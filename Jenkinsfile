@@ -1,7 +1,19 @@
 pipeline {
     agent { label 'java' }
     stages {
-        stage('clone step') {
+        stage('setting parameters to the job') {
+            steps {
+                script {
+                    properties([ 
+                        parameters([ 
+                            choice( 
+                                choices: ['testing', 'development'],
+                                name :'environments'
+                            )
+                        ])
+                    ])
+                }
+       stage('clone step') {
             steps {
                 sh 'rm -rf hello-world-war'
                 sh ' git clone https://github.com/sudarshan1912/hello-world-war.git'
