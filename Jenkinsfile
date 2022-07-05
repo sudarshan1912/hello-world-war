@@ -1,7 +1,8 @@
 pipeline {
     agent { label 'java' }
     stages {
-        stage('setting parameters to the job') {
+        stage('setting parameters to the job') 
+        {
             steps {
                 script {
                     properties([ 
@@ -13,6 +14,8 @@ pipeline {
                         ])
                     ])
                 }
+            }
+        }
        stage('clone step') {
             steps {
                 sh 'rm -rf hello-world-war'
